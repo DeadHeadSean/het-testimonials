@@ -1,0 +1,48 @@
+/* assets/css/testimonials.css */
+:root{
+    --tstm-green: #32735F;
+    --card-width: 300px; /* רוחב בסיס לכרטיס רגיל בסליידר */
+    --gap: 16px;
+  }
+  
+  .het-tstm, .het-tstm * { font-family: "Varela Round", sans-serif; }
+  
+  /* כרטיס */
+  .het-tstm-item{
+    border:1px solid #eee; border-radius:16px; padding:16px; background:#fff;
+    transition: box-shadow .2s ease, transform .2s ease;
+  }
+  .het-tstm-item:hover{
+    box-shadow:0 10px 24px rgba(0,0,0,.10);
+    transform: translateY(-2px);
+  }
+  
+  /* כותרת/שם ממליץ בצבע ירוק */
+  .het-tstm-name{ color: var(--tstm-green); font-weight:700; }
+  
+  /* סליידר: מאפשר “רוחב משתנה” */
+  .het-tstm--slider{ position:relative; }
+  .het-swiper{ overflow:hidden; }
+  .het-swiper .swiper-wrapper{ gap: var(--gap); }
+  .het-swiper .swiper-slide{
+    width: var(--card-width) !important; /* slide רגיל */
+  }
+  .het-swiper .swiper-slide.long{
+    width: calc((var(--card-width) * 2) + var(--gap)) !important; /* כפול */
+  }
+  
+  /* התאמה פנימית */
+  .het-tstm-top{ display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+  .het-tstm-avatar img{ width:56px; height:56px; border-radius:50%; object-fit:cover; }
+  .het-tstm-role{ color:#777; font-size:.95em; }
+  .het-tstm-stars .star{ font-size:1.1em; opacity:.35; }
+  .het-tstm-stars .star.on{ opacity:1; }
+  
+  /* ניווט סליידר */
+  .het-swiper .het-nav{
+    position:absolute; inset-inline:0; top:-48px; display:flex; gap:8px; justify-content:flex-end;
+  }
+  .het-swiper .het-btn{
+    border:1px solid #ddd; border-radius:10px; padding:6px 10px; background:#fff; cursor:pointer;
+  }
+  
