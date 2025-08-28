@@ -56,15 +56,7 @@
   /* BODY – מרכז אנכי */
   .het-tstm-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
   
-  /* CLAMP + read-more */
-  .het-tstm-excerpt {
-    display: -webkit-box;
-    -webkit-line-clamp: 9;  /* כמה שורות בגריד */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .het-tstm-card.is-open .het-tstm-excerpt { -webkit-line-clamp: unset; display: block; overflow: visible; }
-  
+
   .het-tstm-more {
     margin-top: 10px;
     margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
