@@ -31,21 +31,39 @@ jQuery(function($){
 });
 
 jQuery(function($){
+  function getGap(){
+    return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gap'),
+    10);
+  }
+
   $('.het-swiper').each(function(){
     var $wrap = $(this);
-    var swiper = new Swiper($wrap[0], {
-      slidesPerView: 'auto',
-      spaceBetween: 16,
+    var swiper = new Swiper($warp[0], {
+      slidesPreview: 'auto',
+      slidesBetween: getGap(),
       grabCursor: true,
       rtl: $('html').attr('dir') === 'rtl',
       navigation: {
-        nextEl: $wrap.find('.het-next')[0],
-        prevEl: $wrap.find('.het-prev')[0],
-      },
-      breakpoints: {
-        768: { spaceBetween: 16 },
-        1024:{ spaceBetween: 20 }
+        nextEl: $warp.find('.het-next')[0],
+        prevEl: $warp.find('.het-prev')[0],
       }
-    });
   });
+
+  $(window).on('resize', function(){
+    var gap = getGap();
+    if (swiper.param.spaceBetween !== gap){
+      swiper.params.spaceBetween = gap;
+      swiper.update();
+    }
+  });
+});
+
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.het-tstm-more');
+  if (!btn) return;
+  var card = btn.closest('.het-tstm-card');
+  card.classList.toggle('is-open');
+  btn.textContent = card.classList.contains('is-open') ? 'סגור/י' : 'קרא/י עוד';
+});
+
 });

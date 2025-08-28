@@ -4,51 +4,28 @@ if ( ! defined('ABSPATH') ) exit;
 class HET_TSTM_Assets {
 
   public function init() {
-    add_action('wp_enqueue_scripts', [$this, 'enqueue']);
+    add_action('wp_enqueue_scripts', [$this,'enqueue']);
+    // טעינה גם בתצוגה מקדימה של אלמנטור
+    add_action('elementor/frontend/after_register_scripts', [$this,'enqueue']);
+    add_action('elementor/frontend/after_enqueue_scripts', [$this,'enqueue']);
   }
 
   public function enqueue() {
-    // Google Font
-    wp_enqueue_style(
-      'het-varela',
-      'https://fonts.googleapis.com/css2?family=Varela+Round&display=swap',
-      [],
-      null
-    );
+    // CSS התוסף
+    wp_register_style('het-tstm', HET_TSTM_URL.'assets/het-tstm.css', [], HET_TSTM_VER);
+    wp_enqueue_style('het-tstm');
 
-    // Swiper (לסליידר)
-    wp_enqueue_style(
-      'swiper',
-      'https://unpkg.com/swiper@10/swiper-bundle.min.css',
-      [],
-      '10'
-    );
-    wp_enqueue_script(
-      'swiper',
-      'https://unpkg.com/swiper@10/swiper-bundle.min.js',
-      [],
-      '10',
-      true
-    );
+    // JS התוסף
+    wp_register_script('het-tstm', HET_TSTM_URL.'assets/het-tstm.js', ['jquery'], HET_TSTM_VER, true);
+    wp_enqueue_script('het-tstm');
 
-    // CSS/JS של התוסף
-    wp_enqueue_style(
-      'het-testimonials',
-      HET_TSTM_URL . 'assets/css/testimonials.css',
-      [],
-      HET_TSTM_VER
-    );
-    wp_enqueue_script(
-      'het-testimonials',
-      HET_TSTM_URL . 'assets/js/testimonials.js',
-      ['jquery', 'swiper'], // תלות ב־swiper אם יש סליידר
-      HET_TSTM_VER,
-      true
-    );
-
-    wp_localize_script('het-testimonials', 'HET_TSTM', [
-      'ajax'  => admin_url('admin-ajax.php'),
-      'nonce' => wp_create_nonce('het_tstm_nonce'),
-    ]);
+    // Swiper (רק אם נמצא מרקר בדף — חסכוני, אבל בטוח לטעון תמיד אם רוצים)
+    if ( ! wp_script_is('swiper', 'registered') ) {
+      wp_register_style('swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.css', [], '9');
+      wp_register_script('swiper', 'https://unpkg.com/swiper@9/swiper-bundle.min.js', [], '9', true);
+    }
+    // נטען תמיד — פשוט יותר
+    wp_enqueue_style('swiper');
+    wp_enqueue_script('swiper');
   }
 }

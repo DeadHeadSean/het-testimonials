@@ -25,7 +25,7 @@ class HET_TSTM_Ajax {
 
     // יוצר פוסט Pending
     $post_id = wp_insert_post([
-      'post_type'   => 'testimony',
+      'post_type'   => 'HET_TSTM_POST_TYPE',
       'post_status' => 'pending',
       'post_title'  => $name,
       'post_content'=> $content,

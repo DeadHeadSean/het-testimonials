@@ -1,0 +1,116 @@
+:root{
+    --het-green: #1e7f72;       /* ירוק כהה לכותרת */
+    --het-text:  #111827;       /* שחור לגוף */
+    --het-gap:   16px;
+  }
+  
+  /* === GRID === */
+  .het-tstm--grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+  }
+  @media (max-width: 1280px){ .het-tstm--grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 1024px){ .het-tstm--grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px){  .het-tstm--grid { grid-template-columns: 1fr; } }
+  
+  /* === CARD === */
+  .het-tstm-card {
+    font-family: "Varela Round", Arial, sans-serif;
+    color: var(--het-text);
+    display: flex; flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    transition: box-shadow .18s ease, transform .18s ease;
+    text-align: right; /* RTL */
+  }
+  .het-tstm-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  }
+  
+  /* TOP (avatar + meta) */
+  .het-tstm-top {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 12px; margin-bottom: 10px; align-items: center;
+  }
+  .het-tstm-avatar img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+  
+  .het-tstm-name {
+    font-family: "Varela Round", Arial, sans-serif;
+    color: var(--het-green);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .het-tstm-role { color: #6b7280; font-size: .95rem; margin-top: 2px; }
+  
+  .het-tstm-stars { color: #f5a623; margin-top: 6px; font-size: 1rem; line-height: 1; }
+  .het-tstm-stars .star { opacity: .35; }
+  .het-tstm-stars .star.on { opacity: 1; }
+  
+  /* BODY – מרכז אנכי */
+  .het-tstm-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+  
+  /* CLAMP + read-more */
+  .het-tstm-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 9;  /* כמה שורות בגריד */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .het-tstm-card.is-open .het-tstm-excerpt { -webkit-line-clamp: unset; display: block; overflow: visible; }
+  
+  .het-tstm-more {
+    margin-top: 10px;
+    margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
+    font-size: .95rem;
+    background: #f3f5f7;
+    border: 1px solid #e4e7eb;
+    padding: 6px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  /* FEATURED */
+  .het-tstm-card[data-featured="1"] {
+    border: 1px solid var(--het-green);
+    box-shadow: 0 6px 22px rgba(30,127,114,.14);
+    position: relative;
+  }
+  .het-tstm-card[data-featured="1"]::before {
+    content: "Featured";
+    position: absolute; top: 10px; inset-inline-start: 12px;
+    font-size: .78rem; padding: 3px 8px; border-radius: 999px;
+    background: #e6f4f2; color: #0f5e55; border: 1px solid #bfe5de;
+  }
+  
+  /* === SLIDER === */
+  .het-tstm--slider { --perView: 3; }
+  @media (max-width: 1024px){ .het-tstm--slider { --perView: 2; } }
+  @media (max-width: 768px){  .het-tstm--slider { --perView: 1; } }
+  
+  .het-tstm--slider .swiper { overflow: visible; }
+  .het-tstm--slider .swiper-wrapper { align-items: stretch; }
+  .het-tstm--slider .swiper-slide {
+    height: auto; display: flex;
+    width: calc(100% / var(--perView));
+  }
+  .het-tstm--slider .swiper-slide.is-double {
+    width: calc(200% / var(--perView)); /* עדות ארוכה – רוחב כפול */
+  }
+  .het-tstm--slider .het-tstm-card { height: 100%; }
+  
+  /* ניווט */
+  .het-tstm--slider .het-nav {
+    margin-top: 8px; display: flex; gap: 8px; justify-content: center;
+  }
+  .het-tstm--slider .het-btn {
+    background: #f3f5f7; border: 1px solid #e4e7eb;
+    padding: 6px 12px; border-radius: 10px; cursor: pointer;
+  }
+  

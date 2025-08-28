@@ -8,7 +8,7 @@ class HET_TSTM_CPT {
   }
 
   public function register_cpt() {
-    if (post_type_exists('HET_TSTM_POST_TYPE')) return; // אם כבר קיים ה-CPT, לא נרשום אותו שוב
+    if (post_type_exists(HET_TSTM_POST_TYPE)) return; // אם כבר קיים ה-CPT, לא נרשום אותו שוב
     $labels = [
       'name' => 'המלצות',
       'singular_name' => 'המלצה',
@@ -22,7 +22,7 @@ class HET_TSTM_CPT {
       'menu_name' => 'המלצות',
     ];
 
-    register_post_type('testimony', [
+    register_post_type(HET_TSTM_POST_TYPE, [
       'labels' => $labels,
       'public' => true,
       'supports' => ['title','editor','thumbnail'],
@@ -30,8 +30,9 @@ class HET_TSTM_CPT {
       'has_archive' => true,
       'rewrite' => ['slug' => 'testimonials'],
       'show_in_rest' => true,
+      'taxonomies' => [HET_TSTM_TAXONOMY ],
     ]);
-  }
+    }
 
   public function register_meta() {
     $metas = [
@@ -43,7 +44,7 @@ class HET_TSTM_CPT {
       'het_tstm_email'    => 'string', // לא מוצג בפרונט
     ];
     foreach ($metas as $key => $type) {
-      register_post_meta('testimony', $key, [
+      register_post_meta(HET_TSTM_POST_TYPE, 'het_tstm_name', [
         'type'         => $type,
         'single'       => true,
         'show_in_rest' => true,
@@ -52,16 +53,3 @@ class HET_TSTM_CPT {
     }
   }
 }
-
-add_action('add_meta_boxes', function(){
-  add_meta_box('het_tstm_featured_mb','Featured','het_tstm_featured_mb_cb', HET_TSTM_POST_TYPE,'side');
-});
-function het_tstm_featured_mb_cb($post){
-  $val = (bool) get_post_meta($post->ID,'het_tstm_featured', true);
-  wp_nonce_field('het_tstm_featured','het_tstm_featured_n');
-  echo '<label><input type="checkbox" name="het_tstm_featured" '.checked($val,true,false).'> הצג כאייטם מומלץ (Featured)</label>';
-}
-add_action('save_post', function($post_id){
-  if( !isset($_POST['het_tstm_featured_n']) || !wp_verify_nonce($_POST['het_tstm_featured_n'],'het_tstm_featured') ) return;
-  update_post_meta($post_id,'het_tstm_featured', isset($_POST['het_tstm_featured']));
-});
