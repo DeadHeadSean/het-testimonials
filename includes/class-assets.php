@@ -12,11 +12,11 @@ class HET_TSTM_Assets {
 
   public function enqueue() {
     // CSS התוסף
-    wp_register_style('het-tstm', HET_TSTM_URL.'assets/het-tstm.css', [], HET_TSTM_VER);
+    wp_register_style('het-tstm', HET_TSTM_URL.'assets/css/het-tstm.css', [], HET_TSTM_VER);
     wp_enqueue_style('het-tstm');
 
     // JS התוסף
-    wp_register_script('het-tstm', HET_TSTM_URL.'assets/het-tstm.js', ['jquery'], HET_TSTM_VER, true);
+    wp_register_script('het-tstm', HET_TSTM_URL.'assets/js/het-tstm.js', ['jquery'], HET_TSTM_VER, true);
     wp_enqueue_script('het-tstm');
 
     // Swiper (רק אם נמצא מרקר בדף — חסכוני, אבל בטוח לטעון תמיד אם רוצים)

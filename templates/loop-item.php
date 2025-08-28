@@ -50,6 +50,6 @@ $is_featured   = $meta_featured || $term_featured;
       <?php the_content(); ?>
     </div>
 
-    <button class="het-tstm-more" type="button" aria-expanded="false">קרא/י עוד</button>
-  </div>
-</article>
+      <button class="het-btn het-tstm-more" type="button" aria-expanded="false">קרא/י עוד</button>
+    </div>
+  </article>

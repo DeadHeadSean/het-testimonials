@@ -1,7 +1,7 @@
 :root{
     --het-green: #1e7f72;       /* ירוק כהה לכותרת */
     --het-text:  #111827;       /* שחור לגוף */
-    --het-gap:   16px;
+    --het-gap:   24px;
   }
   
   /* === GRID === */
@@ -68,12 +68,23 @@
   .het-tstm-more {
     margin-top: 10px;
     margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
+  }
+
+  .het-tstm .het-btn,
+  .het-tstm .het-tstm-more {
     font-size: .95rem;
-    background: #f3f5f7;
-    border: 1px solid #e4e7eb;
-    padding: 6px 10px;
-    border-radius: 10px;
+    background: var(--het-green) !important;
+    color: #fff !important;
+    border: 1px solid var(--het-green) !important;
+    padding: 6px 12px;
+    border-radius: 999px;
     cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+  }
+  .het-tstm .het-btn:hover,
+  .het-tstm .het-tstm-more:hover {
+    background: #fff !important;
+    color: var(--het-green) !important;
   }
   
   /* FEATURED */
@@ -94,11 +105,12 @@
   @media (max-width: 1024px){ .het-tstm--slider { --perView: 2; } }
   @media (max-width: 768px){  .het-tstm--slider { --perView: 1; } }
   
-  .het-tstm--slider .swiper { overflow: visible; }
+  .het-tstm--slider .swiper { overflow: hidden; }
   .het-tstm--slider .swiper-wrapper { align-items: stretch; }
   .het-tstm--slider .swiper-slide {
     height: auto; display: flex;
     width: calc(100% / var(--perView));
+    overflow: visible;
   }
   .het-tstm--slider .swiper-slide.is-double {
     width: calc(200% / var(--perView)); /* עדות ארוכה – רוחב כפול */
@@ -107,10 +119,6 @@
   
   /* ניווט */
   .het-tstm--slider .het-nav {
-    margin-top: 8px; display: flex; gap: 8px; justify-content: center;
-  }
-  .het-tstm--slider .het-btn {
-    background: #f3f5f7; border: 1px solid #e4e7eb;
-    padding: 6px 12px; border-radius: 10px; cursor: pointer;
+    margin-top: 16px; display: flex; gap: 24px; justify-content: center;
   }
   
