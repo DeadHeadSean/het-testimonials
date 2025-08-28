@@ -68,12 +68,23 @@
   .het-tstm-more {
     margin-top: 10px;
     margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
+  }
+
+  .het-btn,
+  .het-tstm-more {
     font-size: .95rem;
-    background: #f3f5f7;
-    border: 1px solid #e4e7eb;
-    padding: 6px 10px;
-    border-radius: 10px;
+    background: var(--het-green);
+    color: #fff;
+    border: 1px solid var(--het-green);
+    padding: 6px 12px;
+    border-radius: 999px;
     cursor: pointer;
+    transition: background .18s ease, color .18s ease;
+  }
+  .het-btn:hover,
+  .het-tstm-more:hover {
+    background: #fff;
+    color: var(--het-green);
   }
   
   /* FEATURED */
@@ -94,11 +105,12 @@
   @media (max-width: 1024px){ .het-tstm--slider { --perView: 2; } }
   @media (max-width: 768px){  .het-tstm--slider { --perView: 1; } }
   
-  .het-tstm--slider .swiper { overflow: visible; }
+  .het-tstm--slider .swiper { overflow: hidden; }
   .het-tstm--slider .swiper-wrapper { align-items: stretch; }
   .het-tstm--slider .swiper-slide {
     height: auto; display: flex;
     width: calc(100% / var(--perView));
+    overflow: visible;
   }
   .het-tstm--slider .swiper-slide.is-double {
     width: calc(200% / var(--perView)); /* עדות ארוכה – רוחב כפול */
@@ -107,10 +119,6 @@
   
   /* ניווט */
   .het-tstm--slider .het-nav {
-    margin-top: 8px; display: flex; gap: 8px; justify-content: center;
-  }
-  .het-tstm--slider .het-btn {
-    background: #f3f5f7; border: 1px solid #e4e7eb;
-    padding: 6px 12px; border-radius: 10px; cursor: pointer;
+    margin-top: 16px; display: flex; gap: 16px; justify-content: center;
   }
   
