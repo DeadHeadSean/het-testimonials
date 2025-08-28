@@ -10,8 +10,8 @@ $content = get_the_content();
 $is_long = mb_strlen( wp_strip_all_tags( $content ) ) > 350; // סף “ארוך”
 
 ?>
-<div class="swiper-slide<?php echo $is_long ? ' long':''; ?>">
-  <article class="het-tstm-item">
+<div class="swiper-slide<?php echo $is_long ? ' is-double' : ''; ?>">
+  <article class="het-tstm-item het-tstm-card">
     <div class="het-tstm-top">
       <div class="het-tstm-avatar"><?php if (has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?></div>
       <div class="het-tstm-meta">
@@ -28,6 +28,6 @@ $is_long = mb_strlen( wp_strip_all_tags( $content ) ) > 350; // סף “ארוך
         <?php endif; ?>
       </div>
     </div>
-    <div class="het-tstm-content"><?php echo wpautop( wp_kses_post($content) ); ?></div>
+    <div class="het-tstm-body"><?php echo wpautop( wp_kses_post($content) ); ?></div>
   </article>
 </div>
