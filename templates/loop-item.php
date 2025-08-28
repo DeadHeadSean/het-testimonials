@@ -49,3 +49,4 @@ $is_featured   = $meta_featured || $term_featured;
     <?php the_content(); ?>
   </div>
 </article>
+
