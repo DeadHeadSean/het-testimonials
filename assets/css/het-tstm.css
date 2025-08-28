@@ -1,7 +1,7 @@
 :root{
     --het-green: #1e7f72;       /* ירוק כהה לכותרת */
     --het-text:  #111827;       /* שחור לגוף */
-    --het-gap:   16px;
+    --het-gap:   24px;
   }
   
   /* === GRID === */
@@ -70,21 +70,22 @@
     margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
   }
 
-  .het-btn,
-  .het-tstm-more {
+  .het-tstm .het-btn,
+  .het-tstm .het-tstm-more {
     font-size: .95rem;
-    background: var(--het-green);
-    color: #fff;
-    border: 1px solid var(--het-green);
+    background: var(--het-green) !important;
+    color: #fff !important;
+    border: 1px solid var(--het-green) !important;
     padding: 6px 12px;
     border-radius: 999px;
     cursor: pointer;
     transition: background .18s ease, color .18s ease;
   }
-  .het-btn:hover,
-  .het-tstm-more:hover {
-    background: #fff;
-    color: var(--het-green);
+
+  .het-tstm .het-btn:hover,
+  .het-tstm .het-tstm-more:hover {
+    background: #fff !important;
+    color: var(--het-green) !important;
   }
   
   /* FEATURED */
@@ -119,6 +120,6 @@
   
   /* ניווט */
   .het-tstm--slider .het-nav {
-    margin-top: 16px; display: flex; gap: 16px; justify-content: center;
+    margin-top: 16px; display: flex; gap: 24px; justify-content: center;
   }
   
