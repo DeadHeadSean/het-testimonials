@@ -81,6 +81,7 @@
     cursor: pointer;
     transition: background .18s ease, color .18s ease;
   }
+
   .het-tstm .het-btn:hover,
   .het-tstm .het-tstm-more:hover {
     background: #fff !important;
