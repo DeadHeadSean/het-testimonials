@@ -58,14 +58,13 @@ class HET_TSTM_Shortcodes {
     ob_start();
     if ($q->have_posts()) {
       if ($a['layout'] === 'slider') {
-        echo '<div class="het-tstm het-tstm--slider">';
+        echo '<div class="het-tstm het-tstm--slider" dir="rtl">';
         echo '  <div class="het-swiper swiper"><div class="swiper-wrapper">';
         while ($q->have_posts()) { $q->the_post();
           include HET_TSTM_PATH.'templates/loop-item-slider.php';
         }
-        echo '  </div>';
+        echo '  </div></div>';
         echo '  <div class="het-nav"><button class="het-btn het-prev" aria-label="Previous">‹</button><button class="het-btn het-next" aria-label="Next">›</button></div>';
-        echo '  </div>';
         echo '</div>';
       } else {
         echo '<div class="het-tstm het-tstm--grid">';
