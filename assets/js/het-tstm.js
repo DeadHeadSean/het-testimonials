@@ -1,4 +1,4 @@
-(function($){
+(function($){  
     function initSwiper(scope){
         $(scope).find('.het-tstm--slider .het-swiper').each(function(){
           var $wrap = $(this).closest('.het-tstm--slider');
