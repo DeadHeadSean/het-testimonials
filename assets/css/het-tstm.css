@@ -147,9 +147,31 @@
     padding: 24px; border-radius: 16px; position: relative; text-align: right;
     direction: rtl;
   }
-  .het-tstm-modal-close {
+.het-tstm-modal-close {
     position: absolute; top: 10px; inset-inline-end: 10px; cursor: pointer;
   }
+
+/* Add review button */
+.het-tstm--slider .het-add-testimony {
+  display: block;
+  margin: 24px auto 0;
+  font-size: 1.1rem;
+  padding: 10px 24px !important;
+}
+
+/* Simple form layout */
+.het-tstm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.het-tstm-form .row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
   /* === LIGHTBOX === */
   .het-tstm-modal {

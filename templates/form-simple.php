@@ -13,6 +13,6 @@
     <label>המלצה *</label>
     <textarea name="content" rows="5" required></textarea>
   </div>
-  <button type="submit" class="btn">שלחי</button>
+  <button type="submit" class="het-btn">שלחי</button>
   <div class="het-tstm-msg" aria-live="polite"></div>
 </form>
