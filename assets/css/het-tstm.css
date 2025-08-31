@@ -1,8 +1,10 @@
 :root{
     --het-green: #1e7f72;       /* ירוק כהה לכותרת */
     --het-text:  #111827;       /* שחור לגוף */
-    --het-gap:   36px; /* השתמש ב-36px כערך סופי */
-}
+    /* מרווח ברירת מחדל בין קלפים */
+    --het-gap:   36px;
+  }
+
   
   /* === GRID === */
   .het-tstm--grid {
@@ -48,7 +50,7 @@
     color: var(--het-green);
     font-weight: 700;
     line-height: 1.2;
-    text-align: right;
+    text-align: right !important;
   }
   .het-tstm-role { color: #6b7280; font-size: .95rem; margin-top: 2px; text-align: right; }
   
@@ -59,9 +61,14 @@
   /* BODY – מרכז אנכי */
   .het-tstm-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
   
-  .het-tstm .het-btn,
-  .het-tstm .het-btn:visited {
-    font-size: .95rem !important;
+
+  .het-tstm-more {
+    margin-top: 10px;
+    margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
+  }
+
+  .het-tstm .het-btn {
+    font-size: .95rem;
     background: var(--het-green) !important;
     color: #fff !important;
     border: 1px solid var(--het-green) !important;
@@ -73,8 +80,7 @@
     display: inline-block !important;
   }
 
-  .het-tstm .het-btn:hover,
-  .het-tstm .het-btn:focus {
+  .het-tstm .het-btn:hover {
     background: #fff !important;
     color: var(--het-green) !important;
     text-decoration: none !important;
@@ -96,18 +102,16 @@
 /* === SLIDER === */
 /* אפשר תצוגת גבול בעת ריחוף מבלי לחתוך את הקלף */
 .het-tstm--slider .het-swiper {
-  overflow: visible;
+  overflow: hidden;
   padding-inline: var(--het-gap);
+  padding-top: 4px; /* מקום לריחוף מבלי לחתוך את הגבול העליון */
 }
-.het-tstm--slider .swiper-wrapper { align-items: stretch; }
+.het-tstm--slider .swiper-wrapper { align-items: stretch; margin-top: -4px; }
 .het-tstm--slider .swiper-slide {
   height: auto; display: flex;
-  width: 320px;
   overflow: visible;
 }
-@media (max-width: 768px){
-  .het-tstm--slider .swiper-slide { width: 100%; }
-}
+
   .het-tstm--slider .het-tstm-card { height: 100%; }
 
   /* ניווט */
@@ -129,5 +133,20 @@
   .het-tstm-modal-close {
     position: absolute; top: 10px; inset-inline-end: 10px; cursor: pointer;
     background: none; border: none; font-size: 1.5rem;
+  }
+
+  /* === LIGHTBOX === */
+  .het-tstm-modal {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,.6);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .het-tstm-modal-content {
+    background: #fff; max-width: 600px; max-height: 80vh; overflow: auto;
+    padding: 24px; border-radius: 16px; position: relative; text-align: right;
+    direction: rtl;
+  }
+  .het-tstm-modal-close {
+    position: absolute; top: 10px; inset-inline-end: 10px; cursor: pointer;
   }
   

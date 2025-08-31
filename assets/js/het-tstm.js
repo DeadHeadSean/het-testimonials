@@ -4,11 +4,18 @@
           var $wrap = $(this).closest('.het-tstm--slider');
           var gap = parseInt(getComputedStyle($wrap[0]).getPropertyValue('--het-gap')) || 24;
           new Swiper(this, {
-            slidesPerView: 'auto',
+            slidesPerView: 3,
+            slidesPerGroup: 1,
+            centeredSlides: false,
             spaceBetween: gap,
             navigation: {
               nextEl: $wrap.find('.het-next')[0],
               prevEl: $wrap.find('.het-prev')[0],
+            },
+            breakpoints: {
+              0: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
             }
           });
         });
@@ -19,7 +26,7 @@
 
         $(document).on('click', '.het-tstm-more', function(){
           var full = $(this).next('.het-tstm-full').html();
-          var $modal = $('<div class="het-tstm-modal"><div class="het-tstm-modal-content"><button class="het-tstm-modal-close" aria-label="Close">&times;</button>'+ full +'</div></div>');
+          var $modal = $('<div class="het-tstm-modal"><div class="het-tstm-modal-content"><button type="button" class="het-btn het-tstm-modal-close" aria-label="Close">&times;</button>'+ full +'</div></div>');
           $('body').append($modal);
         });
 

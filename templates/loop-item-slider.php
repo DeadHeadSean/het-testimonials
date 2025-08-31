@@ -32,7 +32,7 @@ $preview = $is_long ? esc_html( wp_trim_words( wp_strip_all_tags( $content_html 
     </div>
     <div class="het-tstm-body"><?php echo wpautop( $preview ); ?></div>
     <?php if ($is_long): ?>
-      <button type="button" class="het-tstm-more"><?php esc_html_e('Read more..', 'het'); ?></button>
+      <button type="button" class="het-btn het-tstm-more"><?php echo esc_html__('קראי עוד', 'het'); ?></button>
       <div class="het-tstm-full" style="display:none;">
         <?php echo wpautop( $content_html ); ?>
       </div>
