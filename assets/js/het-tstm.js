@@ -36,6 +36,36 @@
           if(e.target !== this && !$(e.target).hasClass('het-tstm-modal-close')) return;
           $(this).closest('.het-tstm-modal').remove();
         });
+
+        $(document).on('click', '.het-add-testimony', function(){
+          var html = $(this).next('.het-add-form').html();
+          var $modal = $('<div class="het-tstm-modal"><div class="het-tstm-modal-content"><button type="button" class="het-btn het-tstm-modal-close" aria-label="Close">&times;</button>'+ html +'</div></div>');
+          $('body').append($modal);
+        });
+
+        $(document).on('submit', '.het-tstm-form', function(e){
+          e.preventDefault();
+          var $form = $(this);
+          var fd = new FormData(this);
+          $.ajax({
+            url: typeof hetTstm !== 'undefined' ? hetTstm.ajax_url : '',
+            type: 'POST',
+            data: fd,
+            processData: false,
+            contentType: false
+          }).done(function(res){
+            if(res.data && res.data.message){
+              $form.find('.het-tstm-msg').text(res.data.message);
+            }
+            $form[0].reset();
+          }).fail(function(xhr){
+            var msg = 'Error';
+            if(xhr.responseJSON && xhr.responseJSON.data && xhr.responseJSON.data.message){
+              msg = xhr.responseJSON.data.message;
+            }
+            $form.find('.het-tstm-msg').text(msg);
+          });
+        });
       });
 
     window.addEventListener('elementor/frontend/init', function(){
