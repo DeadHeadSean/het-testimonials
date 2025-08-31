@@ -58,14 +58,14 @@ class HET_TSTM_Shortcodes {
     ob_start();
     if ($q->have_posts()) {
       if ($a['layout'] === 'slider') {
-        echo '<div class="het-tstm het-tstm--slider">';
+        echo '<div class="het-tstm het-tstm--slider" dir="rtl">';
         echo '  <div class="het-swiper swiper"><div class="swiper-wrapper">';
-while ($q->have_posts()) { $q->the_post();
-  $double = ($a['span_long'] === '1') && het_tstm_is_long(get_the_ID(), 420);
-  echo '<div class="swiper-slide'.($double ? ' is-double' : '').'">';
-  include HET_TSTM_PATH.'templates/loop-item-slider.php';
-  echo '</div>';
-}
+        while ($q->have_posts()) { $q->the_post();
+          include HET_TSTM_PATH.'templates/loop-item-slider.php';
+        }
+        echo '  </div></div>';
+        echo '  <div class="het-nav"><button class="het-btn het-prev" aria-label="Previous">‹</button><button class="het-btn het-next" aria-label="Next">›</button></div>';
+        echo '</div>';
       } else {
         echo '<div class="het-tstm het-tstm--grid">';
         while ($q->have_posts()) { $q->the_post();

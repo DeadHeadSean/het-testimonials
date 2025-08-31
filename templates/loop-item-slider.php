@@ -13,7 +13,7 @@ $preview = $is_long ? esc_html( wp_trim_words( wp_strip_all_tags( $content_html 
 
 ?>
 <div class="swiper-slide">
-  <article class="het-tstm-item het-tstm-card">
+  <article class="het-tstm-item het-tstm-card" dir="rtl">
     <div class="het-tstm-top">
       <div class="het-tstm-avatar"><?php if (has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?></div>
       <div class="het-tstm-meta">
@@ -32,7 +32,7 @@ $preview = $is_long ? esc_html( wp_trim_words( wp_strip_all_tags( $content_html 
     </div>
     <div class="het-tstm-body"><?php echo wpautop( $preview ); ?></div>
     <?php if ($is_long): ?>
-      <button type="button" class="het-tstm-more"><?php esc_html_e('Read more', 'het'); ?></button>
+      <button type="button" class="het-tstm-more"><?php esc_html_e('Read more..', 'het'); ?></button>
       <div class="het-tstm-full" style="display:none;">
         <?php echo wpautop( $content_html ); ?>
       </div>
