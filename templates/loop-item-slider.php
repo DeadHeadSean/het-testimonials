@@ -7,10 +7,12 @@ $company = het_tstm_get_meta($id,'het_tstm_company');
 $rating  = (int)het_tstm_get_meta($id,'het_tstm_rating', 0);
 
 $content = get_the_content();
-$is_long = mb_strlen( wp_strip_all_tags( $content ) ) > 350; // סף “ארוך”
+$content_html = wp_kses_post( $content );
+$is_long = mb_strlen( wp_strip_all_tags( $content_html ) ) > 350; // סף “ארוך”
+$preview = $is_long ? esc_html( wp_trim_words( wp_strip_all_tags( $content_html ), 40, '...' ) ) : $content_html;
 
 ?>
-<div class="swiper-slide<?php echo $is_long ? ' is-double' : ''; ?>">
+<div class="swiper-slide">
   <article class="het-tstm-item het-tstm-card">
     <div class="het-tstm-top">
       <div class="het-tstm-avatar"><?php if (has_post_thumbnail()) the_post_thumbnail('thumbnail'); ?></div>
@@ -28,6 +30,12 @@ $is_long = mb_strlen( wp_strip_all_tags( $content ) ) > 350; // סף “ארוך
         <?php endif; ?>
       </div>
     </div>
-    <div class="het-tstm-body"><?php echo wpautop( wp_kses_post($content) ); ?></div>
+    <div class="het-tstm-body"><?php echo wpautop( $preview ); ?></div>
+    <?php if ($is_long): ?>
+      <button type="button" class="het-tstm-more"><?php esc_html_e('Read more', 'het'); ?></button>
+      <div class="het-tstm-full" style="display:none;">
+        <?php echo wpautop( $content_html ); ?>
+      </div>
+    <?php endif; ?>
   </article>
 </div>

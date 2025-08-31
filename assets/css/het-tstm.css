@@ -2,6 +2,8 @@
     --het-green: #1e7f72;       /* ירוק כהה לכותרת */
     --het-text:  #111827;       /* שחור לגוף */
     --het-gap:   36px;          /* השתמש ב-36px כערך סופי */
+    /* מרווח ברירת מחדל בין קלפים */
+    --het-gap:   36px;
   }
   
   /* === GRID === */
@@ -24,6 +26,7 @@
     background: #fff;
     border-radius: 16px;
     padding: 16px 18px;
+    border: 1px solid #e5e7eb;
     box-shadow: 0 2px 10px rgba(0,0,0,.06);
     transition: box-shadow .18s ease, transform .18s ease;
     text-align: right; /* RTL */
@@ -90,33 +93,23 @@
     background: #e6f4f2; color: #0f5e55; border: 1px solid #bfe5de;
   }
   
-  /* === SLIDER === */
-  .het-tstm--slider { --perView: 3; }
-  @media (max-width: 1024px){ .het-tstm--slider { --perView: 2; } }
-  @media (max-width: 768px){  .het-tstm--slider { --perView: 1; } }
-  
-  .het-tstm--slider .swiper { overflow: visible; }
-  .het-tstm--slider .het-swiper {
-    overflow: visible;
-    padding-inline: var(--het-gap)
-  }
-  
-  
-  .het-tstm--slider .swiper-wrapper { 
-    align-items: stretch; 
-    padding-inline-end: var(--het-gap); 
-  }
-  .het-tstm--slider .swiper-slide {
-    height: auto; 
-    display: flex;
-    width: calc(100% - (var(--perView) - 1) * var(--het-gap)) / var(--perView); /* חישוב רוחב דינמי לפי מספר פריטים */
-    overflow: visible;
-  }
-  .het-tstm--slider .swiper-slide.is-double {
-    width: calc(2 * ((100% - (var(--perView) -1) * var(--het-gap)) / var(--perView)) + var(--het-gap)); /* רוחב כפול */
-  }
+/* === SLIDER === */
+/* אפשר תצוגת גבול בעת ריחוף מבלי לחתוך את הקלף */
+.het-tstm--slider .het-swiper {
+  overflow: visible;
+  padding-inline: var(--het-gap);
+}
+.het-tstm--slider .swiper-wrapper { align-items: stretch; }
+.het-tstm--slider .swiper-slide {
+  height: auto; display: flex;
+  width: 320px;
+  overflow: visible;
+}
+@media (max-width: 768px){
+  .het-tstm--slider .swiper-slide { width: 100%; }
+}
   .het-tstm--slider .het-tstm-card { height: 100%; }
-  
+
   /* ניווט */
   .het-tstm--slider .het-nav {
     margin-top: 16px; display: flex; gap: 16px; justify-content: center;
