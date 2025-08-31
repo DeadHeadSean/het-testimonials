@@ -8,8 +8,15 @@ class HET_TSTM_Shortcodes {
   }
 
   public function render_form($atts = []) {
+    $a = shortcode_atts([
+      'simple' => '0',
+    ], $atts, 'het_testimony_form');
     ob_start();
-    include HET_TSTM_PATH.'templates/form.php';
+    if ($a['simple'] === '1') {
+      include HET_TSTM_PATH.'templates/form-simple.php';
+    } else {
+      include HET_TSTM_PATH.'templates/form.php';
+    }
     return ob_get_clean();
   }
 
@@ -65,6 +72,9 @@ class HET_TSTM_Shortcodes {
         }
         echo '  </div></div>';
         echo '  <div class="het-nav"><button class="het-btn het-prev" aria-label="Previous">‹</button><button class="het-btn het-next" aria-label="Next">›</button></div>';
+        $form_html = $this->render_form(['simple' => '1']);
+        echo '  <button class="het-btn het-add-testimony">'.esc_html__('השאירי תגובה','het').'</button>';
+        echo '  <div class="het-add-form" style="display:none;">'.$form_html.'</div>';
         echo '</div>';
       } else {
         echo '<div class="het-tstm het-tstm--grid">';
