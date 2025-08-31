@@ -73,7 +73,9 @@ class HET_TSTM_Shortcodes {
       } else {
         echo '<div class="het-tstm het-tstm--grid">';
         while ($q->have_posts()) { $q->the_post();
+          echo '<div class="het-tstm-item">';
           include HET_TSTM_PATH.'templates/loop-item.php';
+          echo '</div>';
         }
         echo '</div>';
 
