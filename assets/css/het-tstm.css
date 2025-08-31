@@ -98,10 +98,11 @@
 /* === SLIDER === */
 /* אפשר תצוגת גבול בעת ריחוף מבלי לחתוך את הקלף */
 .het-tstm--slider .het-swiper {
-  overflow: visible;
+  overflow: hidden;
   padding-inline: var(--het-gap);
+  padding-top: 4px; /* מקום לריחוף מבלי לחתוך את הגבול העליון */
 }
-.het-tstm--slider .swiper-wrapper { align-items: stretch; }
+.het-tstm--slider .swiper-wrapper { align-items: stretch; margin-top: -4px; }
 .het-tstm--slider .swiper-slide {
   height: auto; display: flex;
   overflow: visible;
@@ -126,6 +127,5 @@
   }
   .het-tstm-modal-close {
     position: absolute; top: 10px; inset-inline-end: 10px; cursor: pointer;
-    background: none; border: none; font-size: 1.5rem;
   }
   

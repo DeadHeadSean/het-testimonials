@@ -6,7 +6,7 @@
           new Swiper(this, {
             slidesPerView: 3,
             slidesPerGroup: 1,
-            centeredSlides: true,
+            centeredSlides: false,
             spaceBetween: gap,
             navigation: {
               nextEl: $wrap.find('.het-next')[0],
@@ -26,7 +26,7 @@
 
         $(document).on('click', '.het-tstm-more', function(){
           var full = $(this).next('.het-tstm-full').html();
-          var $modal = $('<div class="het-tstm-modal"><div class="het-tstm-modal-content"><button class="het-tstm-modal-close" aria-label="Close">&times;</button>'+ full +'</div></div>');
+          var $modal = $('<div class="het-tstm-modal"><div class="het-tstm-modal-content"><button type="button" class="het-btn het-tstm-modal-close" aria-label="Close">&times;</button>'+ full +'</div></div>');
           $('body').append($modal);
         });
 
