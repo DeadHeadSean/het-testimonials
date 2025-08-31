@@ -18,6 +18,9 @@ class HET_TSTM_Assets {
     // JS התוסף
     wp_register_script('het-tstm', HET_TSTM_URL.'assets/js/het-tstm.js', ['jquery'], HET_TSTM_VER, true);
     wp_enqueue_script('het-tstm');
+    wp_localize_script('het-tstm', 'hetTstm', [
+      'ajax_url' => admin_url('admin-ajax.php'),
+    ]);
 
     // Swiper (רק אם נמצא מרקר בדף — חסכוני, אבל בטוח לטעון תמיד אם רוצים)
     if ( ! wp_script_is('swiper', 'registered') ) {
