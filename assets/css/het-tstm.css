@@ -1,14 +1,15 @@
 :root{
     --het-green: #1e7f72;       /* ירוק כהה לכותרת */
     --het-text:  #111827;       /* שחור לגוף */
-    --het-gap:   24px;
+    /* מרווח ברירת מחדל בין קלפים */
+    --het-gap:   36px;
   }
   
   /* === GRID === */
   .het-tstm--grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px;
+    gap: var(--het-gap);
     align-items: stretch;
   }
   @media (max-width: 1280px){ .het-tstm--grid { grid-template-columns: repeat(3, 1fr); } }
@@ -24,12 +25,13 @@
     background: #fff;
     border-radius: 16px;
     padding: 16px 18px;
+    border: 1px solid var(--het-green);
+    direction: rtl;
     box-shadow: 0 2px 10px rgba(0,0,0,.06);
-    transition: box-shadow .18s ease, transform .18s ease;
-    text-align: right; /* RTL */
+    transition: box-shadow .18s ease;
+    text-align: right;
   }
   .het-tstm-card:hover {
-    transform: translateY(-3px);
     box-shadow: 0 10px 24px rgba(0,0,0,.12);
   }
   
@@ -46,8 +48,9 @@
     color: var(--het-green);
     font-weight: 700;
     line-height: 1.2;
+    text-align: right !important;
   }
-  .het-tstm-role { color: #6b7280; font-size: .95rem; margin-top: 2px; }
+  .het-tstm-role { color: #6b7280; font-size: .95rem; margin-top: 2px; text-align: right; }
   
   .het-tstm-stars { color: #f5a623; margin-top: 6px; font-size: 1rem; line-height: 1; }
   .het-tstm-stars .star { opacity: .35; }
@@ -63,7 +66,7 @@
   }
 
   .het-tstm .het-btn,
-  .het-tstm .het-tstm-more {
+  .het-tstm-modal .het-btn {
     font-size: .95rem;
     background: var(--het-green) !important;
     color: #fff !important;
@@ -75,7 +78,7 @@
   }
 
   .het-tstm .het-btn:hover,
-  .het-tstm .het-tstm-more:hover {
+  .het-tstm-modal .het-btn:hover {
     background: #fff !important;
     color: var(--het-green) !important;
   }
@@ -93,25 +96,37 @@
     background: #e6f4f2; color: #0f5e55; border: 1px solid #bfe5de;
   }
   
-  /* === SLIDER === */
-  .het-tstm--slider { --perView: 3; }
-  @media (max-width: 1024px){ .het-tstm--slider { --perView: 2; } }
-  @media (max-width: 768px){  .het-tstm--slider { --perView: 1; } }
-  
-  .het-tstm--slider .swiper { overflow: hidden; }
-  .het-tstm--slider .swiper-wrapper { align-items: stretch; }
-  .het-tstm--slider .swiper-slide {
-    height: auto; display: flex;
-    width: calc(100% / var(--perView));
-    overflow: visible;
-  }
-  .het-tstm--slider .swiper-slide.is-double {
-    width: calc(200% / var(--perView)); /* עדות ארוכה – רוחב כפול */
-  }
+/* === SLIDER === */
+/* אפשר תצוגת גבול בעת ריחוף מבלי לחתוך את הקלף */
+.het-tstm--slider .het-swiper {
+  overflow: hidden;
+  padding-inline: var(--het-gap);
+  padding-top: 4px; /* מקום לריחוף מבלי לחתוך את הגבול העליון */
+}
+.het-tstm--slider .swiper-wrapper { align-items: stretch; margin-top: -4px; }
+.het-tstm--slider .swiper-slide {
+  height: auto; display: flex;
+  overflow: visible;
+}
   .het-tstm--slider .het-tstm-card { height: 100%; }
-  
+
   /* ניווט */
   .het-tstm--slider .het-nav {
     margin-top: 16px; display: flex; gap: 24px; justify-content: center;
+  }
+
+  /* === LIGHTBOX === */
+  .het-tstm-modal {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,.6);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .het-tstm-modal-content {
+    background: #fff; max-width: 600px; max-height: 80vh; overflow: auto;
+    padding: 24px; border-radius: 16px; position: relative; text-align: right;
+    direction: rtl;
+  }
+  .het-tstm-modal-close {
+    position: absolute; top: 10px; inset-inline-end: 10px; cursor: pointer;
   }
   
