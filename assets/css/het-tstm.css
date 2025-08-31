@@ -1,9 +1,8 @@
 :root{
     --het-green: #1e7f72;       /* ירוק כהה לכותרת */
     --het-text:  #111827;       /* שחור לגוף */
-    /* מרווח ברירת מחדל בין קלפים */
-    --het-gap:   36px;
-  }
+    --het-gap:   36px; /* השתמש ב-36px כערך סופי */
+}
   
   /* === GRID === */
   .het-tstm--grid {
@@ -60,28 +59,25 @@
   /* BODY – מרכז אנכי */
   .het-tstm-body { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
   
-
-  .het-tstm-more {
-    margin-top: 10px;
-    margin-inline-start: auto;     /* כפתור בצד ימין ב-RTL */
-  }
-
   .het-tstm .het-btn,
-  .het-tstm .het-tstm-more {
-    font-size: .95rem;
+  .het-tstm .het-btn:visited {
+    font-size: .95rem !important;
     background: var(--het-green) !important;
     color: #fff !important;
     border: 1px solid var(--het-green) !important;
-    padding: 6px 12px;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: background .18s ease, color .18s ease;
+    padding: 6px 12px !important;
+    border-radius: 999px !important;
+    cursor: pointer !important;
+    transition: background .18s ease, color .18s ease !important;
+    text-decoration: none !important;
+    display: inline-block !important;
   }
 
   .het-tstm .het-btn:hover,
-  .het-tstm .het-tstm-more:hover {
+  .het-tstm .het-btn:focus {
     background: #fff !important;
     color: var(--het-green) !important;
+    text-decoration: none !important;
   }
   
   /* FEATURED */
@@ -116,7 +112,7 @@
 
   /* ניווט */
   .het-tstm--slider .het-nav {
-    margin-top: 16px; display: flex; gap: 24px; justify-content: center;
+    margin-top: 16px; display: flex; gap: 16px; justify-content: center;
   }
 
   /* === LIGHTBOX === */

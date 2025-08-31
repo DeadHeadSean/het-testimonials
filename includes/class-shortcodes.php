@@ -15,13 +15,13 @@ class HET_TSTM_Shortcodes {
 
   public function render_list($atts = []) {
     $a = shortcode_atts([
-      'limit'    => 6,
-      'layout'   => 'grid',    // grid | slider
-      'paginate' => '0',
-      'tag'      => '',        // "featured" או שם תגית/ים מופרדים בפסיקים
+      'limit'      => 6,
+      'layout'     => 'grid',     // grid | slider
+      'paginate'   => '0',
+      'tag'        => '',         // slug(s) או שם/ים בפסיקים
+      'span_long'  => '1',        // בסליידר: 1=עדות ארוכה רוחב כפול, 0=כיבוי
     ], $atts, 'het_testimonials');
 
-    // בניית tax_query שתומך גם ב-slug וגם ב-name (לנוחיות בעורך)
     $tax_query = null;
     if (!empty($a['tag'])) {
       $raw   = array_filter(array_map('trim', explode(',', $a['tag'])));
@@ -69,7 +69,9 @@ class HET_TSTM_Shortcodes {
       } else {
         echo '<div class="het-tstm het-tstm--grid">';
         while ($q->have_posts()) { $q->the_post();
+          echo '<div class="het-tstm-item">';
           include HET_TSTM_PATH.'templates/loop-item.php';
+          echo '</div>';
         }
         echo '</div>';
 
