@@ -10,6 +10,9 @@
     <input type="text" name="name" required>
   </div>
   <div class="row">
+    <label>דוא״ל (לא יוצג)</label>
+    <input type="email" name="email">
+  <div class="row">
     <label>המלצה *</label>
     <textarea name="content" rows="5" required></textarea>
   </div>
