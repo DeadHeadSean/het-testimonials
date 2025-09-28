@@ -1,0 +1,15 @@
+.het-tstm-form .row { margin-bottom: 12px; }
+.het-tstm-form label { display:block; font-weight:600; margin-bottom:6px; }
+.het-tstm-form input, .het-tstm-form textarea { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; }
+.het-tstm-form .btn { padding:10px 16px; border:none; border-radius:999px; cursor:pointer; }
+.het-tstm-msg { margin-top:10px; }
+
+.het-tstm { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+.het-tstm-item { border:1px solid #eee; border-radius:16px; padding:16px; background:#fff; }
+.het-tstm-item.is-featured { border-color:#c8ad7f; box-shadow:0 6px 18px rgba(0,0,0,.06); }
+.het-tstm-top { display:flex; gap:12px; align-items:center; margin-bottom:10px; }
+.het-tstm-avatar img { width:56px; height:56px; border-radius:50%; object-fit:cover; }
+.het-tstm-name { font-weight:700; }
+.het-tstm-role { color:#777; font-size:.95em; }
+.het-tstm-stars .star { font-size:1.1em; opacity:.35; }
+.het-tstm-stars .star.on { opacity:1; }
